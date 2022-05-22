@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/StartupSummerTest/static/css/main.d5482f44.css",
+    "main.js": "/StartupSummerTest/static/js/main.3642d7cd.js",
+    "static/media/Octocat-logo.svg": "/StartupSummerTest/static/media/Octocat-logo.1ee5d17ed4c57bd108a057783e8b165a.svg",
+    "static/media/followers.svg": "/StartupSummerTest/static/media/followers.fdce70b4d370c3a2740983e9cacf030c.svg",
+    "static/media/zoom-icon.svg": "/StartupSummerTest/static/media/zoom-icon.5e71efd59e1286616282837ee2f362c4.svg",
+    "index.html": "/StartupSummerTest/index.html",
+    "static/media/user-not-found.svg": "/StartupSummerTest/static/media/user-not-found.645d05a066215f55526035a838338db5.svg",
+    "static/media/following.svg": "/StartupSummerTest/static/media/following.e490f2ef98eb937d7888b85f78d4c56a.svg",
+    "main.d5482f44.css.map": "/StartupSummerTest/static/css/main.d5482f44.css.map",
+    "main.3642d7cd.js.map": "/StartupSummerTest/static/js/main.3642d7cd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d5482f44.css",
+    "static/js/main.3642d7cd.js"
+  ]
+}
