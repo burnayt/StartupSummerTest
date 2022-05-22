@@ -7,6 +7,8 @@ import { ReactComponent as ZoomLogo } from './zoom-icon.svg';
 import { ReactComponent as FollowersLogo } from './followers.svg';
 import { ReactComponent as FollowingsLogo } from './following.svg';
 import { ReactComponent as NotFoundLogo } from './user-not-found.svg';
+import { ReactComponent as NoReposLogo } from './no-repos.svg';
+
 
 
 //https://api.github.com/users/burnayt/repos?per_page=4&page=1
@@ -121,8 +123,8 @@ class App extends React.Component {
 class SearchField extends React.Component {    
     OnKeyUp = (event)=>{
         if (event.code === 'Enter') {
-            console.log( event.target );
-            event.target.blur()    ;
+            // console.log( event.target );
+            // event.target.blur()    ;
             this.props.request(event.target.value)
         }        
     }
@@ -266,7 +268,7 @@ class Repos extends React.Component {
             );
     }
     render() {
-        console.log(this.state.repos)
+        console.log(this.state.repos.length)
         const repos = this.state.repos.map((element)=>{
             return <SingleRepositoriy 
             key={element.id}
@@ -299,42 +301,60 @@ class Repos extends React.Component {
         }
         if(this.currentPage <= Math.ceil( this.props.repNum/4) - 2){
             pages.push(<div key={-2}>...</div>)
-        }        
-        return(
-            <div className="repos-container">
-                <div>
-                    <h2>Repositories({this.props.repNum})</h2>
-                </div>
-                <div className="repos-list">
-                    {repos}
-                </div>
-                <div className="repos-pages">
-                    <div className="stat">
-                        { 4*(this.currentPage-1)+1} - {this.currentPage*4} of {Math.ceil( this.props.repNum)}
+        }   
+        //RETURNs
+        if (this.props.repNum === 0) {
+            return(
+                <div className="repos-empty">
+                    <div>
+
                     </div>
-                    <div className="page-panel" onClick={this.requestPage}>
-                        <div data-index="lt">
-                            &lt;
+                    <NoReposLogo/>
+                    <p>
+                        Repository list is empty
+                    </p>
+                </div>
+            )
+        }     
+        else{
+            return(
+                <div className="repos-container">
+                    <div>
+                        <h2>Repositories({this.props.repNum})</h2>
+                    </div>
+                    <div className="repos-list">
+                        {repos}
+                    </div>
+                    <div className="repos-pages">
+                        <div className="stat">
+                            { 4*(this.currentPage-1)+1} - {this.currentPage*4} of {Math.ceil( this.props.repNum)}
                         </div>
-                       
-                        <div data-index="1" className={this.currentPage === 1? 'current':''}>
-                            1
-                        </div>
-                        {pages}
-                        <div data-index={Math.ceil( this.props.repNum/4)}
-                         className={this.currentPage === Math.ceil( this.props.repNum/4)? 'current':''}>
-                            {Math.ceil( this.props.repNum/4)}
+                        <div className="page-panel" onClick={this.requestPage}>
+                            <div data-index="lt">
+                                &lt;
+                            </div>
+                           
+                            <div data-index="1" className={this.currentPage === 1? 'current':''}>
+                                1
+                            </div>
+                            {pages}
+                            <div data-index={Math.ceil( this.props.repNum/4)}
+                             className={this.currentPage === Math.ceil( this.props.repNum/4)? 'current':''}>
+                                {Math.ceil( this.props.repNum/4)}
+                            </div>
+                            
+                            <div data-index="gt">
+                                &gt;
+                            </div>
+                          
                         </div>
                         
-                        <div data-index="gt">
-                            &gt;
-                        </div>
-                      
-                    </div>
-                    
-                </div>                
-            </div>
-        );
+                    </div>                
+                </div>
+            );
+            
+        }
+        
     }
 }
 class SingleRepositoriy extends React.Component{

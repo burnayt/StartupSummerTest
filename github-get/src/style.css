@@ -209,6 +209,22 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 90%;
+  
+}
+.repos-empty{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.repos-empty p{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #000000;
 }
 
 .repos-container>div {
